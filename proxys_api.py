@@ -4,7 +4,7 @@ async def get_balance(session, *, key):
 
     """Проверка баланса пользователя"""
 
-    url = f"http://proxys.io/ru/api/v2/balance"
+    url = 'http://proxys.io/ru/api/v2/balance'
     params = {'key': key}
     async with session.get(url, params=params) as response:
         response.raise_for_status()
@@ -15,7 +15,7 @@ async def get_ip(session, *, key):
 
     """Запрос ip адресов пользователя"""
 
-    url = f"http://proxys.io/ru/api/v2/ip"
+    url = 'http://proxys.io/ru/api/v2/ip'
     params = {'key': key}
     async with session.get(url, params=params) as response:
         response.raise_for_status()
@@ -26,7 +26,7 @@ async def get_order_price(session, *, service, count, country='RU', period=30):
 
     """Запрос цены нового заказа"""
 
-    url = f"http://proxys.io/ru/api/v2/price"
+    url = 'http://proxys.io/ru/api/v2/price'
     params = {
         'service': service,
         'count': count,
@@ -42,7 +42,7 @@ async def get_services(session, *, tariff=1, description=0):
 
     """Запрос доступных для аренды типов ip адресов"""
 
-    url = f"http://proxys.io/ru/api/v2/services"
+    url = 'http://proxys.io/ru/api/v2/services'
     params = {
         'tariff': tariff,
         'description': description,
@@ -56,7 +56,7 @@ async def buy_proxy(session, *, key, service=1, count=1, country='RU', period=30
 
     """Покупка новых прокси"""
 
-    url = f"http://proxys.io/ru/api/v2/buy"
+    url = 'http://proxys.io/ru/api/v2/buy'
     body = {
         'key': key,
         'service': service,
@@ -73,7 +73,7 @@ async def extend_existing_order(session, *, key, order_id):
 
     """Продление существующего заказа"""
 
-    url = f"http://proxys.io/ru/api/v2/extending"
+    url = 'http://proxys.io/ru/api/v2/extending'
     body = {
         'key': key,
         'order_id': order_id,
