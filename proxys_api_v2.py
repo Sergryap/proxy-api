@@ -28,9 +28,7 @@ async def get_ip(*, key):
 
 
 async def get_order_price(*, service, count, country='RU', period=30):
-
     """Запрос цены нового заказа"""
-
     url = 'http://proxys.io/ru/api/v2/price'
     params = {
         'service': service,
@@ -45,9 +43,7 @@ async def get_order_price(*, service, count, country='RU', period=30):
 
 
 async def get_services(*, tariff=1, description=0):
-
     """Запрос доступных для аренды типов ip адресов"""
-
     url = 'http://proxys.io/ru/api/v2/services'
     params = {
         'tariff': tariff,
@@ -60,9 +56,7 @@ async def get_services(*, tariff=1, description=0):
 
 
 async def buy_proxy(*, key, service=1, count=1, country='RU', period=30):
-
     """Покупка новых прокси"""
-
     url = 'http://proxys.io/ru/api/v2/buy'
     body = {
         'key': key,
@@ -78,9 +72,7 @@ async def buy_proxy(*, key, service=1, count=1, country='RU', period=30):
 
 
 async def extend_existing_order(*, key, order_id):
-
     """Продление существующего заказа"""
-
     url = 'http://proxys.io/ru/api/v2/extending'
     body = {
         'key': key,

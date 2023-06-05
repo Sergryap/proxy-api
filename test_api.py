@@ -4,7 +4,7 @@ import json
 
 from environs import Env
 from pprint import pprint
-from proxys_api import (
+from with_httpx import (
     get_ip,
     get_balance,
     get_services,
@@ -15,9 +15,8 @@ from proxys_api import (
 
 
 async def test_api(method, data=None):
-    async with aiohttp.ClientSession() as session:
-        response = await method(session, **(data if data else {}))
-        pprint(json.loads(response))
+    response = await method(**(data if data else {}))
+    pprint(response)
 
 
 if __name__ == '__main__':
