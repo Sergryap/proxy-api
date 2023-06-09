@@ -3,14 +3,7 @@ import httpx
 
 from environs import Env
 from pprint import pprint
-from proxy_api import (
-    get_ip,
-    get_balance,
-    get_services,
-    get_order_price,
-    extend_existing_order,
-    buy_proxy,
-)
+import proxy_api
 
 
 async def test_api(method, data=None):
@@ -28,7 +21,7 @@ if __name__ == '__main__':
     loop = asyncio.new_event_loop()
     # loop.run_until_complete(
     #     test_api(
-    #         buy_proxy,
+    #         proxy_api.buy_proxy,
     #         data={
     #             'key': KEY,
     #             'service': 3,
@@ -38,6 +31,6 @@ if __name__ == '__main__':
     #         }
     #     )
     # )
-    loop.run_until_complete(test_api(get_services))
-    # loop.run_until_complete(test_api(get_ip, {'key': KEY}))
-    # loop.run_until_complete(test_api(get_order_price, {'service': 1, 'count': 1}))
+    loop.run_until_complete(test_api(proxy_api.get_services))
+    # loop.run_until_complete(test_api(proxy_api.get_ip, {'key': KEY}))
+    # loop.run_until_complete(test_api(proxy_api.get_order_price, {'service': 1, 'count': 1}))
