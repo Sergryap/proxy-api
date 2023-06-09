@@ -1,10 +1,9 @@
 import asyncio
-import aiohttp
-import json
+import httpx
 
 from environs import Env
 from pprint import pprint
-from with_httpx import (
+from proxy_api import (
     get_ip,
     get_balance,
     get_services,
@@ -15,8 +14,9 @@ from with_httpx import (
 
 
 async def test_api(method, data=None):
-    response = await method(**(data if data else {}))
-    pprint(response)
+    async with httpx.AsyncClient() as session:
+        response = await method(session, **(data if data else {}))
+        pprint(response.dict())
 
 
 if __name__ == '__main__':
@@ -40,3 +40,4 @@ if __name__ == '__main__':
     # )
     loop.run_until_complete(test_api(get_services))
     # loop.run_until_complete(test_api(get_ip, {'key': KEY}))
+    # loop.run_until_complete(test_api(get_order_price, {'service': 1, 'count': 1}))
