@@ -1,41 +1,41 @@
 from pydantic import BaseModel
-from typing import Dict, List, Any, Union
+from typing import Any, Union
 import httpx
 
 
 class Balance(BaseModel):
     success: bool
-    data: Dict[str, Union[int, str]] = None
-    error: Dict[str, List[Union[int, str]]] = None
+    data: dict[str, Union[int, str]] = None
+    error: dict[str, list[Union[int, str]]] = None
 
 
 class IP(BaseModel):
     success: bool
-    data: List[Dict[str, Union[int, str, List[Dict[str, Union[int, str]]]]]] = None
-    error: Dict[str, List[Union[int, str]]] = None
+    data: list[dict[str, Union[int, str, list[dict[str, Union[int, str]]]]]] = None
+    error: dict[str, list[Union[int, str]]] = None
 
 
 class OrderPrice(BaseModel):
     success: bool
-    data: Dict[str, Union[int, str]] = None
-    error: Dict[str, Union[int, str, Dict[str, List[Any]]]] = None
+    data: dict[str, Union[int, str]] = None
+    error: dict[str, Union[int, str, dict[str, list[Any]]]] = None
 
 
 class Services(BaseModel):
     success: bool
-    data: List[Dict[str, Union[int, str, List[Any]]]]
+    data: list[dict[str, Union[int, str, list[Any]]]]
 
 
 class BuyProxy(BaseModel):
     success: bool
-    data: Dict[str, Union[int, str]] = None
-    error: Dict[str, Union[int, str, Dict, List]] = None
+    data: dict[str, Union[int, str]] = None
+    error: dict[str, Union[int, str, dict, list]] = None
 
 
 class ExistingOrder(BaseModel):
     success: bool
-    data: Dict[str, Union[int, str]] = None
-    error: Dict[str, Union[int, str, Dict, List]] = None
+    data: dict[str, Union[int, str]] = None
+    error: dict[str, Union[int, str, dict, list]] = None
 
 
 class ProxysHTTPStatusError(httpx._exceptions.HTTPStatusError):
